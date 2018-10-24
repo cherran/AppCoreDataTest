@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14315.18" systemVersion="18A391" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="CDMenu" representedClassName="CDMenu" syncable="YES">
+        <attribute name="expires" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="lastModified" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="slotId" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="menuConfigurationResponse" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDMenuConfigurationResponse" inverseName="menus" inverseEntity="CDMenuConfigurationResponse" syncable="YES"/>
+        <relationship name="menuEntries" toMany="YES" deletionRule="Cascade" destinationEntity="CDMenuEntry" inverseName="menu" inverseEntity="CDMenuEntry" syncable="YES"/>
+    </entity>
+    <entity name="CDMenuConfigurationResponse" representedClassName="CDMenuConfigurationResponse" syncable="YES">
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="menus" toMany="YES" deletionRule="Cascade" destinationEntity="CDMenu" inverseName="menuConfigurationResponse" inverseEntity="CDMenu" syncable="YES"/>
+    </entity>
+    <entity name="CDMenuEntry" representedClassName="CDMenuEntry" syncable="YES">
+        <attribute name="linksTo" attributeType="String" syncable="YES"/>
+        <attribute name="type" attributeType="String" syncable="YES"/>
+        <relationship name="localizedInfos" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CDMenuEntryInfo" inverseName="menuEntry" inverseEntity="CDMenuEntryInfo" syncable="YES"/>
+        <relationship name="menu" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDMenu" inverseName="menuEntries" inverseEntity="CDMenu" syncable="YES"/>
+    </entity>
+    <entity name="CDMenuEntryInfo" representedClassName="CDMenuEntryInfo" syncable="YES">
+        <attribute name="imageData" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <attribute name="imageLocator" attributeType="String" syncable="YES"/>
+        <attribute name="language" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="menuEntry" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDMenuEntry" inverseName="localizedInfos" inverseEntity="CDMenuEntry" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="CDMenuEntryInfo" positionX="-331.0703125" positionY="172.89453125" width="128" height="118"/>
+        <element name="CDMenuEntry" positionX="-45" positionY="45" width="128" height="103"/>
+        <element name="CDMenu" positionX="430.9140625" positionY="-156.8359375" width="128" height="135"/>
+        <element name="CDMenuConfigurationResponse" positionX="670.515625" positionY="-471.5546875" width="128" height="73"/>
+    </elements>
+</model>
